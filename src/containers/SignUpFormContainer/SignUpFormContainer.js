@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./SignUpFormContainer.module.css"
 import generateTime from './utils';
+import {withRouter} from 'react-router-dom';
 
 
 class SignUpFormContainer extends React.Component {
@@ -21,11 +22,11 @@ class SignUpFormContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault();
         const {history} = this.props;
-        //if everything looks right
-
-        // history.push("/complete-registeration");
+        history.push('/not-confirmed');
+        
      }
 
     handleGenderSelect(e) {
@@ -85,15 +86,15 @@ class SignUpFormContainer extends React.Component {
                     <div className= {styles.date}>
                         <select name = "day" defaultValue = {defaultDay}>
                             {
-                                days.map(day => <option value = {day} > {day}</option>)
+                                days.map((day, index) => <option key = {day} value = {day} > {day}</option>)
                             }
                         </select>
                         <select name = {defaultMonth}>
-                            {months.map(month => (<option value = {month}> {month}</option>))}
+                            {months.map(month => (<option key = {month} value = {month}> {month}</option>))}
             
                         </select>
                         <select defaultValue = {defaultYear} >
-                            {years.map(year => (<option value = {year}> {year}</option>))}
+                            {years.map(year => (<option key = {year} value = {year}> {year}</option>))}
                         </select>
                     </div>
                     <input placeholder='Type your location' />
@@ -109,4 +110,4 @@ class SignUpFormContainer extends React.Component {
     }
 }
 
-export default  SignUpFormContainer
+export default  withRouter(SignUpFormContainer)

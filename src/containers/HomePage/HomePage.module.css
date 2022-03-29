@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftPanel {
+    flex: 2;
+    background-color: aqua;
+}
+
+.rightPanel {
+    flex: 6;
+}

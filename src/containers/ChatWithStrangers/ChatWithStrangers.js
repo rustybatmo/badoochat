@@ -1,11 +1,18 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
-const ChatWithStrangers = () => {
+const ChatWithStrangers = (props) => {
+
+    const handleClick = () => {
+        const {history}  = props
+        history.push("/profile-onboarding");
+    }
+
     return (
         <div>
-            <button>Chat with Strangers</button>
+            <button onClick={handleClick}>Chat with Strangers</button>
         </div>
     )
 }
 
-export default ChatWithStrangers
+export default withRouter(ChatWithStrangers);
